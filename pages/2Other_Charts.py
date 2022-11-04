@@ -39,7 +39,7 @@ Data_Selection = Data.query(
     "City == @city & Customer_type == @cust_type & Gender == @Gender &  Products == @Products"
 )
 
-st.markdown('We are going to plot some other charts related to there payments mode and total sale . ')
+st.write('We are going to plot some other charts related to there payments mode and total sale . ')
 
 
 
@@ -49,8 +49,8 @@ sunburst_Of_Products = px.sunburst(Data_Selection , path =['City' , 'Gender', 'P
 
 st.plotly_chart(sunburst_Of_Products,use_container_width=True)
 
-st.markdown('In the above sunburst chart we have use total 4 variables . ')
-st.markdown('The variables is City , Gender,Products and Total sale.')
+st.write('In the above sunburst chart we have use total 4 variables . ')
+st.write('The variables is City , Gender,Products and Total sale.')
 st.write('This chart shows,In different  cities how much product sale had done by males and females ')
 
 

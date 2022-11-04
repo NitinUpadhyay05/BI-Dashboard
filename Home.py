@@ -32,14 +32,14 @@ with right_column:
     st.subheader(f'{average_sales}')
 st.markdown('---')
 
-st.markdown('We are going creat a Dhasboard on supermarket sales data .')
+st.write('We are going creat a Dhasboard on supermarket sales data .')
 
 st.title('Here is the Data:')
 Data
 
-st.markdown('This is the data and it is represent sales data .')
-st.markdown('There are 1000 rows and 17 columns in sales data. ')
-st.markdown('On the basis of this data we are going to plot some charts . From that charts we are concluding what that charts represent.')
+st.write('This is the data and it is represent sales data .')
+st.write('There are 1000 rows and 17 columns in sales data. ')
+st.write('On the basis of this data we are going to plot some charts . From that charts we are concluding what that charts represent.')
 
 
-st.markdown('Lets go on Sales by product page.')
+st.write('Lets go on Sales by product page.')
