@@ -42,4 +42,4 @@ st.write('There are 1000 rows and 17 columns in sales data. ')
 st.write('On the basis of this data we are going to plot some charts . From that charts we are concluding what that charts represent.')
 
 
-st.write('Lets go on Sales by product page.')
+st.write ('Lets go on Sales by product page.')

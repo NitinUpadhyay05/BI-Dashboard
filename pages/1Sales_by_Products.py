@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import matplotlib.pyplot as plt
 
 Data = pd.read_csv('Sales.N.csv')
 
@@ -10,7 +11,7 @@ st.title("Sale by Products.")
 st.markdown('##')
 st.write('Now, We are going to Draw some Chart .')
 
-st.title('1. Bar Chart Total sale of products')
+
 
 Data.rename(columns={'Product line':'Products'}, inplace=True)
 
@@ -56,30 +57,51 @@ fig_product_line = px.bar(
 fig_product_line.update_layout(
     
     plot_bgcolor='rgba(0,0,0,0)',
-    yaxis = (dict(showgrid = False))
+    yaxis = (dict(showgrid = False)),
+    xaxis = (dict(showgrid = False))
 )
 
-st.plotly_chart(fig_product_line,use_container_width=True)
 
 
-st.write('As we can see the bar chart represents the total sale of products.')
-st.write('This bar chart shows which product sale is higher. As, we can see In  this bar chart Food and Beverage sale is higher then the others.')
 
 
-st.title('2. Line Chart sale of product by quantity')
+
 
 Quantity_product = px.line(sales_by_product_line, x= sales_by_product_line.index, y  = 'Quantity' , title='<b> Quantity sale of Products<b>')
-st.plotly_chart(Quantity_product,use_container_width=True)
 
-st.write('The above line chart represents in how much quantity customers purchased the products.')
-st.write('And, This is also represents which product sale  is higher in quantity or we can say as per the quantity of Product  which product purchased more by the customers. ')
+
+col1 , col2 = st.columns([50,50])
+
+with col1:
+    st.title('Bar Chart Total sale of products')
+    st.plotly_chart(fig_product_line,use_container_width=True)
+
+with col2:
+    st.title('Line Chart sale of product by quantity')
+    st.plotly_chart(Quantity_product,use_container_width=True)
 
 st.title('Histogram of tax 5%:')
 
 
 Tax_chart_by_Member_a_products = px.histogram(Data_Selection , x = 'Products',y = 'Tax 5%' , color = 'Customer_type', barmode = 'group', title = '<b>Tax pay by customer type.<b>')
 st.plotly_chart(Tax_chart_by_Member_a_products,use_container_width=True)
+Tax_chart_by_Member_a_products.update_layout(
+    plot_bgcolor='rgba(0,0,0,0)',
+    yaxis = (dict(showgrid = False)),
+    xaxis = (dict(showgrid = False))
+)
 
-st.write('In this Histogram we have used three variables.on x-axis products , on y axis = sum of tax and the third variable is customer type .')
-st.write('In the customer type there are two type of customers  normal customers and member customers .')
-st.write('Histogram shows tax payed from the member customer and tax payed bt the normal customer omn there Products .')
+
+st.title('Histogram of Tyeps of payments:')
+
+
+Type_of_payments = px.histogram(Data_Selection , x = 'Products',y = 'Total',color =  'Payment',barmode = 'group', title='<b>Types of payments by there products<b>')
+st.plotly_chart(Type_of_payments,use_container_width=True)
+
+Type_of_payments.update_layout(
+    plot_bgcolor='rgba(0,0,0,0)',
+    yaxis = (dict(showgrid = False))
+)
+
+
+st.markdown('...')
